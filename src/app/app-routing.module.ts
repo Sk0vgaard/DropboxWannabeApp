@@ -5,10 +5,12 @@ import { LoginComponent } from './auth/login/login.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { FileSystemComponent } from './home/file-system/file-system.component';
 import { ProfileComponent } from './user/profile/profile.component';
+import { RegisterComponent } from './auth/register/register.component';
 
 // Route setup.
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
+  { path: 'register', component: RegisterComponent },
   { path: 'profile', component: ProfileComponent },
   { path: 'file-system', component: FileSystemComponent },
   { path: 'page-not-found', component: PageNotFoundComponent }
