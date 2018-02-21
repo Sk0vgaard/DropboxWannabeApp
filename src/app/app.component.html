@@ -1,2 +1,32 @@
-<button mat-raised-button color="primary"> Click me </button>
-<router-outlet></router-outlet>
+<mat-sidenav-container class="main-container">
+  <mat-sidenav mode="side"
+               [opened]="navBarOpen">
+    <mat-nav-list>
+      <a mat-list-item routerLink="/login">
+        <app-margin-icon [iconName]="'lock_open'"></app-margin-icon>
+        Login
+      </a>
+      <a mat-list-item routerLink="/">
+        <app-margin-icon [iconName]="'home'"></app-margin-icon>
+        Home
+      </a>
+      <a mat-list-item routerLink="/profile">
+        <app-margin-icon [iconName]="'account_circle'"></app-margin-icon>
+        Profile
+      </a>
+      <a mat-list-item routerLink="/files">
+        <app-margin-icon [iconName]="'folder'"></app-margin-icon>
+        Files
+      </a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <app-toolbar (navToggle)="toggleNav()">
+
+
+    </app-toolbar>
+    <div style="margin-left: 10px">
+      <router-outlet></router-outlet>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

@@ -10,10 +10,10 @@ import { RegisterComponent } from './auth/register/register.component';
 // Route setup.
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
+  { path: '', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'profile', component: ProfileComponent },
-  { path: 'file-system', component: FileSystemComponent },
-  { path: 'page-not-found', component: PageNotFoundComponent }
+  { path: 'files', component: FileSystemComponent },
 ];
 
 @NgModule({
