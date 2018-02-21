@@ -8,11 +8,13 @@ import { AppRoutingModule } from './/app-routing.module';
 import { AuthModule } from './auth/auth.module';
 import { HomeModule } from './home/home.module';
 import { UserModule } from './user/user.module';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,
