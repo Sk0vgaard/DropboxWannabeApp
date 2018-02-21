@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './auth/login/login.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 // Route setup.
 const routes: Routes = [
