@@ -2,21 +2,9 @@
   <mat-sidenav mode="side"
                [opened]="navBarOpen">
     <mat-nav-list>
-      <a mat-list-item routerLink="/login">
-        <app-margin-icon [iconName]="'lock_open'"></app-margin-icon>
-        Login
-      </a>
-      <a mat-list-item routerLink="/">
-        <app-margin-icon [iconName]="'home'"></app-margin-icon>
-        Home
-      </a>
-      <a mat-list-item routerLink="/profile">
-        <app-margin-icon [iconName]="'account_circle'"></app-margin-icon>
-        Profile
-      </a>
-      <a mat-list-item routerLink="/files">
-        <app-margin-icon [iconName]="'folder'"></app-margin-icon>
-        Files
+      <a *ngFor="let route of routes" mat-list-item [routerLink]="route.route">
+        <app-margin-icon [iconName]="route.icon"></app-margin-icon>
+        {{route.title}}
       </a>
     </mat-nav-list>
   </mat-sidenav>
