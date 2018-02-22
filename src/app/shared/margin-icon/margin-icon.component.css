@@ -2,3 +2,7 @@
   margin-left: 10px;
   margin-right: 10px;
 }
+
+mat-icon.icon-color {
+  color: #3f51b5;
+}
