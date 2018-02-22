@@ -8,13 +8,14 @@
       </a>
     </mat-nav-list>
   </mat-sidenav>
-  <mat-sidenav-content>
-    <app-toolbar (navToggle)="toggleNav()">
-
-
-    </app-toolbar>
-    <div style="margin-left: 10px">
+  <mat-sidenav-content fxLayout="column">
+    <app-toolbar (navToggle)="toggleNav()"></app-toolbar>
+    <div fxFlex>
       <router-outlet></router-outlet>
     </div>
+    <footer fxLayout="column">
+      <hr fxFlexFill="">
+      <p fxFlexAlign="center">Made by <b>Mathias Skovgaard</b></p>
+    </footer>
   </mat-sidenav-content>
 </mat-sidenav-container>
