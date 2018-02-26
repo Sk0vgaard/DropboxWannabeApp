@@ -12,6 +12,8 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { SharedModule } from './shared/shared.module';
 import { RouterModule } from '@angular/router';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { environment } from '../environments/environment';
+import { AngularFireModule } from 'angularfire2';
 
 
 @NgModule({
@@ -31,7 +33,8 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     HomeModule,
     UserModule,
     MatIconModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    AngularFireModule.initializeApp(environment.firebase)
   ],
   providers: [],
   exports: [RouterModule],
