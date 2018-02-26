@@ -6,3 +6,7 @@ mat-sidenav {
 mat-sidenav-content {
   background: white;
 }
+
+.spaceFromTop {
+  padding-top: 40px;
+}

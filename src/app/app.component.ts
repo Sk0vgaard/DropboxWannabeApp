@@ -18,6 +18,7 @@ export class AppComponent implements OnDestroy {
 
   navBarOpen = true;
   watcher: Subscription;
+  mode = 'side';
 
   constructor(media: ObservableMedia) {
     this.watcher = media.subscribe((change: MediaChange) => {
@@ -36,13 +37,15 @@ export class AppComponent implements OnDestroy {
   }
 
   private loadDashboardContent() {
-    console.log('Large View');
+    this.navBarOpen = true;
+    this.mode = 'side';
   }
 
   loadMobileContent() {
     // Do something special since the viewport is currently
     // using mobile display sizes
-    console.log('Small View');
+    this.navBarOpen = false;
+    this.mode = 'over';
   }
 
   ngOnDestroy(): void {

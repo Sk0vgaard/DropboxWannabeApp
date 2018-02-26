@@ -1,5 +1,5 @@
-<mat-sidenav-container fxFlexFill="">
-  <mat-sidenav mode="side"
+<mat-sidenav-container fxFlexFill (backdropClick)="toggleNav()">
+  <mat-sidenav [mode]="mode"
                [opened]="navBarOpen">
     <mat-nav-list>
       <a *ngFor="let route of routes" mat-list-item [routerLink]="route.route">
@@ -13,7 +13,7 @@
     <div fxFlex>
       <router-outlet></router-outlet>
     </div>
-    <footer fxLayout="column">
+    <footer fxLayout="column" class="spaceFromTop">
       <hr fxFlexFill="">
       <p fxFlexAlign="center">Made by <b>Mathias Skovgaard</b></p>
     </footer>
