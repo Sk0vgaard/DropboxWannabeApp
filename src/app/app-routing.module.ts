@@ -5,6 +5,7 @@ import { LoginComponent } from './auth/login/login.component';
 import { FileSystemComponent } from './home/file-system/file-system.component';
 import { ProfileComponent } from './user/profile/profile.component';
 import { RegisterComponent } from './auth/register/register.component';
+import { AuthModule } from './auth/auth.module';
 
 // Route setup.
 const routes: Routes = [
@@ -19,6 +20,7 @@ const routes: Routes = [
   imports: [
     CommonModule,
     RouterModule.forRoot(routes),
+    AuthModule
   ],
   declarations: [],
   // export RouterModule to whom ever uses it.
