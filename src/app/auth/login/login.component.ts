@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AngularFireAuth } from 'angularfire2/auth';
+import { AuthService } from '../shared/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -8,11 +8,13 @@ import { AngularFireAuth } from 'angularfire2/auth';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private fireAuth: AngularFireAuth) { }
+  constructor(private authService: AuthService) { }
 
   ngOnInit() {
-    this.fireAuth.auth.createUserAndRetrieveDataWithEmailAndPassword('123456@gmail.com', '123456')
-      .then(user => console.log(user));
+    this.authService.login('123@gmail.com', '123456')
+      .then(user => console.log(user))
+      .catch(error => console.log(error));
   }
+
 
 }
