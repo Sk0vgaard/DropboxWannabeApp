@@ -2,6 +2,9 @@ mat-toolbar.toolbar-background {
   background: #009688;
 }
 
-button.button-background {
+button.button-logout {
   background: #afafaf;
+
+}button.button-toolbar {
+  background: #00b6ac;
 }
