@@ -11,24 +11,23 @@
 
 
   <div id="login" class="col s12">
-    <form class="col s12">
+    <form (ngSubmit)="login()" [formGroup]="loginForm" novalidate class="col s12">
       <div class="form-container">
         <h3 class="teal-text">Welcome</h3>
         <div class="row">
           <div class="input-field col s12">
-            <input id="txtEmail" type="email" class="validate" placeholder="Email">
+            <input type="email" class="validate" placeholder="Email" formControlName="email">
           </div>
         </div>
         <div class="row">
           <div class="input-field col s12">
-            <input id="txtPassword" type="password" class="validate" placeholder="Password">
+            <input type="password" class="validate" placeholder="Password" formControlName="password">
           </div>
         </div>
         <br>
 
         <div>
-          <!--<button id="btnLogin" class="btn waves-effect waves-light teal" type="submit" name="action">Login</button>-->
-          <button id="btnLogin" (click)="login()" class="btn btn-action">Login</button>
+          <button id="btnLogin" class="btn waves-effect waves-light teal" type="submit" name="action">Login</button>
           <!--<a href="">Forgotten password?</a>-->
         </div>
       </div>
