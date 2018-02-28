@@ -10,7 +10,9 @@ export class AuthService {
 
 
   login(email: string, password: string): Promise<any> {
-    return this.fireAuth.auth.signInAndRetrieveDataWithEmailAndPassword(email, password);
+    const promise = this.fireAuth.auth.signInAndRetrieveDataWithEmailAndPassword(email, password);
+
+    return promise;
   }
 
   logout(): Promise<any> {
