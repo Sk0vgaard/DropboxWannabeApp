@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../shared/auth.service';
 import * as firebase from 'firebase/app';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { MatSnackBar } from '@angular/material';
 
 @Component({
   selector: 'app-login',
@@ -13,7 +14,8 @@ export class LoginComponent implements OnInit {
   loginForm: FormGroup;
 
   constructor(private authService: AuthService,
-              private fb: FormBuilder) {
+              private fb: FormBuilder,
+              private snackBar: MatSnackBar) {
 
     this.loginForm = fb.group({
         email: '',
@@ -23,11 +25,6 @@ export class LoginComponent implements OnInit {
 
 
   ngOnInit() {
-    // Log in
-    this.authService.login('123@gmail.com', '123456')
-      .then( () => console.log('Logged In...'))
-      .catch(error => console.log(error));
-
     this.authService.isAuthenticated()
       .subscribe(authState => console.log(authState),
         error2 => console.log(error2),
@@ -39,7 +36,11 @@ export class LoginComponent implements OnInit {
     // Log in
     this.authService.login(loginModel.email, loginModel.password)
       .then( () => console.log('Logged In...'))
-      .catch(error => console.log(error));
+      .catch(error => {
+        this.snackBar.open(error.message, '', {
+          duration: 4000
+        });
+      });
   }
 
 

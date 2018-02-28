@@ -6,13 +6,15 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AuthService } from './shared/auth.service';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { ReactiveFormsModule } from '@angular/forms';
+import { MatSnackBarModule } from '@angular/material';
 
 @NgModule({
   imports: [
     CommonModule,
     AngularFireAuthModule,
     FlexLayoutModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatSnackBarModule
   ],
   declarations: [LoginComponent, RegisterComponent],
   providers: [AuthService]
