@@ -28,9 +28,12 @@ export class ToolbarComponent implements OnInit {
   }
 
   logout() {
-    this.authService.logout();
+    this.authService.logout()
+      .then(() => {
+      this.router.navigateByUrl('login');
+      });
     console.log('Logged Out...');
-    this.router.navigateByUrl('login');
+
   }
 
 }

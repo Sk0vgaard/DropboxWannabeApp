@@ -6,14 +6,15 @@ import { FileSystemComponent } from './home/file-system/file-system.component';
 import { ProfileComponent } from './user/profile/profile.component';
 import { RegisterComponent } from './auth/register/register.component';
 import { AuthModule } from './auth/auth.module';
+import { AuthGaurd } from './auth/shared/auth-gaurd.service';
 
 // Route setup.
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: '', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
-  { path: 'profile', component: ProfileComponent },
-  { path: 'files', component: FileSystemComponent },
+  { path: 'profile', component: ProfileComponent, canActivate: [AuthGaurd]},
+  { path: 'files', component: FileSystemComponent, canActivate: [AuthGaurd] },
 ];
 
 @NgModule({

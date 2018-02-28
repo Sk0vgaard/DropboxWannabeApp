@@ -7,6 +7,7 @@ import { AuthService } from './shared/auth.service';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatSnackBarModule } from '@angular/material';
+import { AuthGaurd } from './shared/auth-gaurd.service';
 
 @NgModule({
   imports: [
@@ -17,6 +18,6 @@ import { MatSnackBarModule } from '@angular/material';
     MatSnackBarModule
   ],
   declarations: [LoginComponent, RegisterComponent],
-  providers: [AuthService]
+  providers: [AuthService, AuthGaurd]
 })
 export class AuthModule { }
