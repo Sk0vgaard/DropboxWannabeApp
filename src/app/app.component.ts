@@ -1,13 +1,14 @@
-import { Component, OnDestroy } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MediaChange, ObservableMedia } from '@angular/flex-layout';
 import { Subscription } from 'rxjs/Subscription';
+import { AuthService } from './auth/shared/auth.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnDestroy {
+export class AppComponent implements OnInit, OnDestroy {
 
   routes = [
     {route: '/', title: 'Home', icon: 'home'},
@@ -20,7 +21,8 @@ export class AppComponent implements OnDestroy {
   watcher: Subscription;
   mode = 'side';
 
-  constructor(media: ObservableMedia) {
+  constructor(media: ObservableMedia,
+              private authService: AuthService) {
     this.watcher = media.subscribe((change: MediaChange) => {
       if ( change.mqAlias === 'xs') {
         this.loadMobileContent();
@@ -29,8 +31,6 @@ export class AppComponent implements OnDestroy {
       }
     });
   }
-
-
 
   toggleNav() {
     this.navBarOpen = !this.navBarOpen;
@@ -50,6 +50,12 @@ export class AppComponent implements OnDestroy {
 
   ngOnDestroy(): void {
     this.watcher.unsubscribe();
+  }
+
+  ngOnInit(): void {
+    this.authService.isAuthenticated().subscribe(isLoggedIn => {
+      this.navBarOpen = isLoggedIn;
+    });
   }
 
 }
