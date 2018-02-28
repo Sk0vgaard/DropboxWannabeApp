@@ -24,7 +24,7 @@ export class AppComponent implements OnDestroy {
     this.watcher = media.subscribe((change: MediaChange) => {
       if ( change.mqAlias === 'xs') {
         this.loadMobileContent();
-      }else {
+      } else {
         this.loadDashboardContent();
       }
     });
