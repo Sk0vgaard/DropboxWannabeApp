@@ -21,8 +21,8 @@ export class RegisterComponent implements OnInit {
   ngOnInit() {
     this.registerForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
-      confirmEmail: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required]],
+      confirmEmail: ['', [Validators.required]],
+      password: ['', [Validators.required, Validators.minLength(6)]],
       confirmPassword: ['', [Validators.required]]
     });
   }
@@ -46,6 +46,17 @@ export class RegisterComponent implements OnInit {
           duration: 4000
         });
       });
+  }
+
+  fcError(fc: string, ec: string, pre: string[]): boolean {
+    if (pre && pre.length > 0) {
+      for (let i = 0; i < pre.length; i++) {
+        if (this.registerForm.get(fc).hasError(pre[i])) {
+          return false;
+        }
+      }
+    }
+    return this.registerForm.get(fc).hasError(ec);
   }
 
 }

@@ -1,6 +1,5 @@
-
-  <div fxLayout="row" fxLayoutAlign="center" class="fromTop">
-  <mat-card fxFlex="50" >
+<div fxLayout="row" fxLayoutAlign="center" class="fromTop">
+  <mat-card fxFlex="50">
 
     <div class="container">
       <ul>
@@ -23,6 +22,12 @@
                  type="email"
                  placeholder="E-mail"
                  formControlName="email">
+          <mat-error *ngIf="fcError('email', 'required')">
+            E-mail is <strong>required</strong>
+          </mat-error>
+          <mat-error *ngIf="fcError('email', 'email', ['required'])">
+            E-mail is <strong>invalid</strong>
+          </mat-error>
         </mat-form-field>
 
         <!--E-mail confirmation-->
@@ -30,6 +35,7 @@
           <input matInput=""
                  type="email"
                  class="validate"
+                 formControlName="confirmEmail"
                  placeholder="E-mail Confirmation">
         </mat-form-field>
 
@@ -45,6 +51,7 @@
         <mat-form-field fxFlex="">
           <input matInput=""
                  type="password"
+                 formControlName="confirmPassword"
                  placeholder="Password Confirmation">
         </mat-form-field>
 
@@ -58,4 +65,4 @@
       </form>
     </mat-card-content>
   </mat-card>
-  </div>
+</div>
