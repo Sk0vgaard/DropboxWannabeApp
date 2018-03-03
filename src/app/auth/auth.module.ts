@@ -13,6 +13,7 @@ import {
 } from '@angular/material';
 import { AuthGaurd } from './shared/auth-gaurd.service';
 import { RouterModule } from '@angular/router';
+import { LoggedInGuard } from './shared/logged-in.guard';
 
 @NgModule({
   imports: [
@@ -30,6 +31,6 @@ import { RouterModule } from '@angular/router';
     MatButtonModule,
   ],
   declarations: [LoginComponent, RegisterComponent],
-  providers: [AuthService, AuthGaurd]
+  providers: [AuthService, AuthGaurd, LoggedInGuard]
 })
 export class AuthModule { }

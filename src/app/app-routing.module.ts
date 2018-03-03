@@ -7,12 +7,14 @@ import { ProfileComponent } from './user/profile/profile.component';
 import { RegisterComponent } from './auth/register/register.component';
 import { AuthModule } from './auth/auth.module';
 import { AuthGaurd } from './auth/shared/auth-gaurd.service';
+import { LoggedInGuard } from './auth/shared/logged-in.guard';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 // Route setup.
 const routes: Routes = [
-  { path: 'login', component: LoginComponent },
-  { path: '', component: LoginComponent },
-  { path: 'register', component: RegisterComponent },
+  { path: 'login', component: LoginComponent, canActivate: [LoggedInGuard]},
+  { path: '', component: PageNotFoundComponent },
+  { path: 'register', component: RegisterComponent, canActivate: [LoggedInGuard]},
   { path: 'profile', component: ProfileComponent, canActivate: [AuthGaurd]},
   { path: 'files', component: FileSystemComponent, canActivate: [AuthGaurd] },
 ];
