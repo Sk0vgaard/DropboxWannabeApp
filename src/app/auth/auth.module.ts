@@ -6,7 +6,7 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AuthService } from './shared/auth.service';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import {  FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MatSnackBarModule } from '@angular/material';
+import { MatCardModule, MatFormFieldModule, MatInputModule, MatSnackBarModule } from '@angular/material';
 import { AuthGaurd } from './shared/auth-gaurd.service';
 
 @NgModule({
@@ -16,7 +16,10 @@ import { AuthGaurd } from './shared/auth-gaurd.service';
     FlexLayoutModule,
     ReactiveFormsModule,
     FormsModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatCardModule,
   ],
   declarations: [LoginComponent, RegisterComponent],
   providers: [AuthService, AuthGaurd]
