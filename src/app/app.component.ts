@@ -12,7 +12,6 @@ export class AppComponent implements OnInit, OnDestroy {
 
   routes = [
     {route: '/', title: 'Home', icon: 'home'},
-    {route: '/login', title: 'Login', icon: 'lock_open'},
     {route: '/profile', title: 'Profile', icon: 'account_circle'},
     {route: '/files', title: 'Files', icon: 'folder'},
     ];
