@@ -9,39 +9,42 @@
   </ul>
 
 <div id="register" class="col s12">
-  <form class="col s12">
+  <form (ngSubmit)="register()"
+        [formGroup]="registerForm"
+        novalidate
+        class="col s12">
     <div class="form-container">
-      <h3 class="teal-text">Welcome</h3>
+      <h4 class="teal-text">Please register</h4>
       <div class="row">
         <div class="input-field col s6">
           <input id="first_name" type="text" class="validate" placeholder="First Name">
         </div>
         <div class="input-field col s6">
-          <input id="last_name" type="text" class="validate" placeholder="Last Name">
+          <input  type="text" class="validate" placeholder="Last Name">
         </div>
       </div>
       <div class="row">
         <div class="input-field col s12">
-          <input id="txtEmail" type="email" class="validate" placeholder="E-mail">
+          <input type="email" class="validate" placeholder="E-mail" formControlName="email">
         </div>
       </div>
       <div class="row">
         <div class="input-field col s12">
-          <input id="email-confirm" type="email" class="validate" placeholder="E-mail Confirmation">
+          <input type="email" class="validate" placeholder="E-mail Confirmation">
         </div>
       </div>
       <div class="row">
         <div class="input-field col s12">
-          <input id="txtPassword" type="password" class="validate" placeholder="Password" >
+          <input type="password" class="validate" placeholder="Password" formControlName="password">
         </div>
       </div>
       <div class="row">
         <div class="input-field col s12">
-          <input id="password-confirm" type="password" class="validate" placeholder="Password Confirmation">
+          <input type="password" class="validate" placeholder="Password Confirmation">
         </div>
       </div>
       <div>
-        <button id="btnRegister" class="btn waves-effect waves-light teal" type="submit" name="action">Submit</button>
+        <button type="submit" class="btn waves-effect waves-light teal" name="action">Submit</button>
       </div>
     </div>
   </form>
