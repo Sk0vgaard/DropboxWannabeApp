@@ -37,6 +37,9 @@
                  class="validate"
                  formControlName="confirmEmail"
                  placeholder="E-mail Confirmation">
+          <mat-error *ngIf="fcError('confirmEmail', 'required')">
+            Please insert E-Mail again to avoid possible <strong>error</strong>
+          </mat-error>
         </mat-form-field>
 
         <!--Password-->
@@ -45,6 +48,9 @@
                  type="password"
                  placeholder="Password"
                  formControlName="password">
+          <mat-error *ngIf="fcError('password', 'required')">
+            Password is <strong>required</strong>
+          </mat-error>
         </mat-form-field>
 
         <!--Password confirmation-->
@@ -53,6 +59,9 @@
                  type="password"
                  formControlName="confirmPassword"
                  placeholder="Password Confirmation">
+          <mat-error *ngIf="fcError('confirmPassword', 'required')">
+            Password Confirmation is <strong>required</strong> aswell
+          </mat-error>
         </mat-form-field>
 
         <div class="center">
