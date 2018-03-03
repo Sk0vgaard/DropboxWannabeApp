@@ -1,58 +1,61 @@
-<p>
-  register works!
-</p>
 
-<div class="container white z-depth-2">
-  <ul class="tabs teal">
-    <li class="tab col s3"><a class="white-text active" href="login">login</a></li>
-    <li class="tab col s3"><a class="white-text" href="register">register</a></li>
-  </ul>
+  <div fxLayout="row" fxLayoutAlign="center" class="fromTop">
+  <mat-card fxFlex="50" >
 
-<div id="register" class="col s12">
-  <form (ngSubmit)="register()"
-        [formGroup]="registerForm"
-        novalidate
-        class="col s12">
-    <div class="form-container">
-      <h4 class="teal-text">Please register</h4>
-
-      <!--FirstName & LastName-->
-      <!--<div class="row">-->
-        <!--<div class="input-field col s6">-->
-          <!--<input id="first_name" type="text" class="validate" placeholder="First Name">-->
-        <!--</div>-->
-        <!--<div class="input-field col s6">-->
-          <!--<input  type="text" class="validate" placeholder="Last Name">-->
-        <!--</div>-->
-      <!--</div>-->
-
-      <div class="row">
-        <div class="input-field col s12">
-          <input type="email" class="validate" placeholder="E-mail" formControlName="email">
-          <!--<mat-error *ngIf="registerForm.get('email').hasError('required')">-->
-            <!--E-mail is required-->
-          <!--</mat-error>-->
-        </div>
-      </div>
-      <div class="row">
-        <div class="input-field col s12">
-          <input type="email" class="validate" placeholder="E-mail Confirmation">
-        </div>
-      </div>
-      <div class="row">
-        <div class="input-field col s12">
-          <input type="password" class="validate" placeholder="Password" formControlName="password">
-        </div>
-      </div>
-      <div class="row">
-        <div class="input-field col s12">
-          <input type="password" class="validate" placeholder="Password Confirmation">
-        </div>
-      </div>
-      <div>
-        <button type="submit" class="btn waves-effect waves-light teal" name="action">Submit</button>
-      </div>
+    <div class="container">
+      <ul>
+        <li><a href="login">Login</a></li>
+        <li><a href="register">Register</a></li>
+      </ul>
     </div>
-  </form>
-</div>
-</div>
+
+    <h4>Please register</h4>
+
+    <mat-card-content>
+      <form (ngSubmit)="register()"
+            [formGroup]="registerForm"
+            novalidate
+            fxLayout="column">
+
+        <!--E-mail-->
+        <mat-form-field fxFlex>
+          <input matInput
+                 type="email"
+                 placeholder="E-mail"
+                 formControlName="email">
+        </mat-form-field>
+
+        <!--E-mail confirmation-->
+        <mat-form-field fxFlex>
+          <input matInput=""
+                 type="email"
+                 class="validate"
+                 placeholder="E-mail Confirmation">
+        </mat-form-field>
+
+        <!--Password-->
+        <mat-form-field fxFlex="">
+          <input matInput
+                 type="password"
+                 placeholder="Password"
+                 formControlName="password">
+        </mat-form-field>
+
+        <!--Password confirmation-->
+        <mat-form-field fxFlex="">
+          <input matInput=""
+                 type="password"
+                 placeholder="Password Confirmation">
+        </mat-form-field>
+
+        <div class="center">
+          <button type="submit"
+                  name="action">
+            Submit
+          </button>
+        </div>
+
+      </form>
+    </mat-card-content>
+  </mat-card>
+  </div>
