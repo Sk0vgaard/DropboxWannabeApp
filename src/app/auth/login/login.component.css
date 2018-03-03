@@ -51,3 +51,8 @@ button {
 button:hover {
   background-color: #00b7a8;
 }
+
+button:disabled {
+  opacity: 0.6;
+  pointer-events: none;
+}

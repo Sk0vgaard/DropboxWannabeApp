@@ -38,7 +38,7 @@
                  formControlName="confirmEmail"
                  placeholder="E-mail Confirmation">
           <mat-error *ngIf="fcError('confirmEmail', 'required')">
-            Please insert E-Mail again to avoid possible <strong>error</strong>
+            Please insert your E-Mail again to avoid possible <strong>error</strong>
           </mat-error>
         </mat-form-field>
 
@@ -51,16 +51,19 @@
           <mat-error *ngIf="fcError('password', 'required')">
             Password is <strong>required</strong>
           </mat-error>
+          <mat-error *ngIf="fcError('password', 'minlength', ['required'])">
+          Password requires at least <strong>6</strong> characters
+        </mat-error>
         </mat-form-field>
 
         <!--Password confirmation-->
         <mat-form-field fxFlex="">
-          <input matInput=""
+          <input matInput
                  type="password"
-                 formControlName="confirmPassword"
-                 placeholder="Password Confirmation">
+                 placeholder="Password Confirmation"
+                 formControlName="confirmPassword">
           <mat-error *ngIf="fcError('confirmPassword', 'required')">
-            Password Confirmation is <strong>required</strong> aswell
+            Password Confirmation is <strong>required</strong> as well
           </mat-error>
           <mat-error *ngIf="fcError('confirmPassword', 'no-match', ['required'])">
             The two passwords does <strong>NOT</strong> match
@@ -69,7 +72,7 @@
 
         <div class="center">
           <button type="submit"
-                  name="action">
+                  [disabled]="registerForm.invalid">
             Submit
           </button>
         </div>
