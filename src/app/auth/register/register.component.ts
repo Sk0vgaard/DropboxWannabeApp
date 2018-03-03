@@ -4,6 +4,7 @@ import { AuthService } from '../shared/auth.service';
 import { MatSnackBar } from '@angular/material';
 import { Router } from '@angular/router';
 import { matchPassword } from '../shared/password.validator';
+import { User } from '../shared/user';
 
 @Component({
   selector: 'app-register',
@@ -29,10 +30,9 @@ export class RegisterComponent implements OnInit {
   }
 
   register() {
-    const model = this.registerForm.value;
-
+    const model = this.registerForm.value as User;
     // Register
-    this.authService.register(model.email, model.password)
+    this.authService.register(model)
       .then( () => {
         this.router.navigateByUrl('login')
           .then(() => {

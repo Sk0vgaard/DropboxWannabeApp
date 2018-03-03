@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
+import { User } from './user';
 
 @Injectable()
 export class AuthService {
@@ -17,10 +18,12 @@ export class AuthService {
     return promise;
   }
 
-  register(email: string, password: string): Promise<any> {
+  // Using User to type safe our code.
+  register(user: User): Promise<any> {
     const promise = this.fireAuth.auth.createUserAndRetrieveDataWithEmailAndPassword(
-      email,
-      password);
+      user.email,
+      user.password
+    );
 
       return promise;
   }
