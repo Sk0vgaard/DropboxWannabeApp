@@ -7,7 +7,6 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './/app-routing.module';
 import { AuthModule } from './auth/auth.module';
 import { HomeModule } from './home/home.module';
-import { UserModule } from './user/user.module';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { SharedModule } from './shared/shared.module';
 import { RouterModule } from '@angular/router';
@@ -31,10 +30,9 @@ import { AngularFireModule } from 'angularfire2';
     SharedModule,
     AuthModule,
     HomeModule,
-    UserModule,
     MatIconModule,
     FlexLayoutModule,
-    AngularFireModule.initializeApp(environment.firebase)
+    AngularFireModule.initializeApp(environment.firebase),
   ],
   providers: [],
   exports: [RouterModule],

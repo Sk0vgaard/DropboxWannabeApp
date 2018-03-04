@@ -49,7 +49,7 @@ export class RegisterComponent implements OnInit {
       });
   }
 
-  fcError(fc: string, ec: string, pre: string[]): boolean {
+  fcError(fc: string, ec?: string, pre?: string[]): boolean {
     if (pre && pre.length > 0) {
       for (let i = 0; i < pre.length; i++) {
         if (this.registerForm.get(fc).hasError(pre[i])) {

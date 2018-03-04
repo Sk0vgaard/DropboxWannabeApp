@@ -14,6 +14,7 @@ import {
 import { AuthGaurd } from './shared/auth-gaurd.service';
 import { RouterModule } from '@angular/router';
 import { LoggedInGuard } from './shared/logged-in.guard';
+import { ProfileComponent } from './profile/profile.component';
 
 @NgModule({
   imports: [
@@ -30,7 +31,7 @@ import { LoggedInGuard } from './shared/logged-in.guard';
     MatTabsModule,
     MatButtonModule,
   ],
-  declarations: [LoginComponent, RegisterComponent],
+  declarations: [LoginComponent, RegisterComponent, ProfileComponent],
   providers: [AuthService, AuthGaurd, LoggedInGuard]
 })
 export class AuthModule { }
