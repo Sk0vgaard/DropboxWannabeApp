@@ -3,6 +3,7 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import { User } from './user';
+import * as firebase from 'firebase/app';
 
 @Injectable()
 export class AuthService {
@@ -24,7 +25,6 @@ export class AuthService {
       user.email,
       user.password
     );
-
       return promise;
   }
 
@@ -41,6 +41,12 @@ export class AuthService {
       .map(authState => {
         return authState !== null;
       });
+  }
+
+  signInWithGoogle() {
+    return this.fireAuth.auth.signInWithPopup(
+      new firebase.auth.GoogleAuthProvider()
+    );
   }
 
 }

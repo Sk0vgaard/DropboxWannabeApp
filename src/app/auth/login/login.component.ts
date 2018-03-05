@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../shared/auth.service';
-import * as firebase from 'firebase/app';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { MatSnackBar } from '@angular/material';
 import { Router } from '@angular/router';
+import { AngularFireAuth } from 'angularfire2/auth';
 
 @Component({
   selector: 'app-login',
@@ -17,7 +17,8 @@ export class LoginComponent implements OnInit {
   constructor(private authService: AuthService,
               private fb: FormBuilder,
               private snackBar: MatSnackBar,
-              private router: Router) {
+              private router: Router,
+              private fireAuth: AngularFireAuth) {
 
     this.loginForm = fb.group({
         email: '',
@@ -54,4 +55,11 @@ export class LoginComponent implements OnInit {
   }
 
 
+  signInWithGoogle() {
+    this.authService.signInWithGoogle()
+      .then((res) => {
+        this.router.navigate(['profile']);
+      })
+      .catch((err) => console.log(err));
+  }
 }
