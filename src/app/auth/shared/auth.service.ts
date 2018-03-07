@@ -2,13 +2,14 @@ import { Injectable } from '@angular/core';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
-import { User } from './user';
+import { User } from '../../user/shared/user';
 import * as firebase from 'firebase/app';
 
 @Injectable()
 export class AuthService {
 
-  constructor(private fireAuth: AngularFireAuth) { }
+  constructor(private fireAuth: AngularFireAuth) {
+  }
 
 
   login(email: string, password: string): Promise<any> {
@@ -21,15 +22,21 @@ export class AuthService {
 
   // Using User to type safe our code.
   register(user: User): Promise<any> {
-    const promise = this.fireAuth.auth.createUserAndRetrieveDataWithEmailAndPassword(
-      user.email,
-      user.password
+    const promise = this.fireAuth.auth
+      .createUserAndRetrieveDataWithEmailAndPassword(
+        user.email,
+        user.password
     );
-      return promise;
+    return promise;
   }
 
   logout(): Promise<any> {
     return this.fireAuth.auth.signOut();
+    // return this.fireAuth.auth.signOut().then(() => {
+    //   window.location.assign('https://accounts.google.com/Logout');
+    // }, (error) => {
+    //   console.log(error);
+    // });
   }
 
   isAuthenticated(): Observable<boolean> {
@@ -49,4 +56,12 @@ export class AuthService {
     );
   }
 
+  getAuthUser(): Observable<User> {
+    return this.fireAuth.authState
+      .map(authState => {
+        if (authState) {
+          return {email: authState.email, uid: authState.uid};
+        }
+      });
+  }
 }

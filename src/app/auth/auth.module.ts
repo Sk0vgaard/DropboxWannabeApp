@@ -8,13 +8,14 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import {  FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {
   MatButtonModule,
-  MatCardModule, MatFormFieldModule, MatInputModule, MatSnackBarModule,
+  MatCardModule, MatFormFieldModule, MatIconModule, MatInputModule, MatSnackBarModule,
   MatTabsModule
 } from '@angular/material';
 import { AuthGaurd } from './shared/auth-gaurd.service';
 import { RouterModule } from '@angular/router';
 import { LoggedInGuard } from './shared/logged-in.guard';
 import { ProfileComponent } from './profile/profile.component';
+import { UserModule } from '../user/user.module';
 
 @NgModule({
   imports: [
@@ -30,6 +31,8 @@ import { ProfileComponent } from './profile/profile.component';
     RouterModule,
     MatTabsModule,
     MatButtonModule,
+    MatIconModule,
+    UserModule
   ],
   declarations: [LoginComponent, RegisterComponent, ProfileComponent],
   providers: [AuthService, AuthGaurd, LoggedInGuard]
