@@ -6,8 +6,9 @@ import { FileSystemComponent } from './home/file-system/file-system.component';
 import { AuthModule } from './auth/auth.module';
 import { AuthGaurd } from './auth/shared/auth-gaurd.service';
 import { LoggedInGuard } from './auth/shared/logged-in.guard';
-import { ProfileComponent } from './auth/profile/profile.component';
+import { ProfileComponent } from './user/profile/profile.component';
 import { RegisterComponent } from './auth/register/register.component';
+import { UserModule } from './user/user.module';
 
 // Route setup.
 const routes: Routes = [
@@ -22,7 +23,8 @@ const routes: Routes = [
   imports: [
     CommonModule,
     RouterModule.forRoot(routes),
-    AuthModule
+    AuthModule,
+    UserModule
   ],
   declarations: [],
   // export RouterModule to whom ever uses it.

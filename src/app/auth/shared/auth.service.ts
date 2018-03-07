@@ -51,9 +51,11 @@ export class AuthService {
   }
 
   signInWithGoogle() {
-    return this.fireAuth.auth.signInWithPopup(
-      new firebase.auth.GoogleAuthProvider()
-    );
+    const googleAuthProvider  = new firebase.auth.GoogleAuthProvider();
+    googleAuthProvider .setCustomParameters({
+      prompt: 'select_account'
+    })
+    return this.fireAuth.auth.signInWithPopup(googleAuthProvider);
   }
 
   getAuthUser(): Observable<User> {

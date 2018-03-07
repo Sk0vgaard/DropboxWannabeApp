@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { User } from '../../user/shared/user';
+import { User } from '../shared/user';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { UserService } from '../../user/shared/user.service';
+import { UserService } from '../shared/user.service';
 
 @Component({
   selector: 'app-profile',

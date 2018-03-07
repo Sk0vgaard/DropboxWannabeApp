@@ -14,8 +14,6 @@ import {
 import { AuthGaurd } from './shared/auth-gaurd.service';
 import { RouterModule } from '@angular/router';
 import { LoggedInGuard } from './shared/logged-in.guard';
-import { ProfileComponent } from './profile/profile.component';
-import { UserModule } from '../user/user.module';
 
 @NgModule({
   imports: [
@@ -24,17 +22,16 @@ import { UserModule } from '../user/user.module';
     FlexLayoutModule,
     ReactiveFormsModule,
     FormsModule,
+    RouterModule,
     MatSnackBarModule,
     MatFormFieldModule,
     MatInputModule,
     MatCardModule,
-    RouterModule,
     MatTabsModule,
     MatButtonModule,
     MatIconModule,
-    UserModule
   ],
-  declarations: [LoginComponent, RegisterComponent, ProfileComponent],
+  declarations: [LoginComponent, RegisterComponent],
   providers: [AuthService, AuthGaurd, LoggedInGuard]
 })
 export class AuthModule { }
