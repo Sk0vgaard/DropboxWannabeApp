@@ -24,7 +24,16 @@ export class ProfileComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.userService.getUser().subscribe(user => this.user = user);
+    this.userService.getUser()
+      .subscribe(user => this.user = user);
+  }
+
+  save() {
+    const model = this.profileForm.value as User;
+    model.uid = this.user.uid;
+    this.userService.update(model)
+      .then(() => console.log('saved'))
+      .catch(err => console.log('error', err));
   }
 
   fcErr(fc: string, ec: string, pre?: string[]): boolean {
