@@ -3,11 +3,21 @@ import { User } from '../shared/user';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UserService } from '../shared/user.service';
 import { Subscription } from 'rxjs/Subscription';
+import { animate, state, style, transition, trigger } from '@angular/animations';
 
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
-  styleUrls: ['./profile.component.css']
+  styleUrls: ['./profile.component.css'],
+  animations: [trigger('imageHover',
+    [state('hoveringImage', style({
+      opacity: 0.3
+    })),
+      state('notHoveringImage', style({
+        opacity: 1
+      })),
+      transition('hoveringImage <=> notHoveringImage', animate('200ms ease-in'))
+    ])]
 })
 export class ProfileComponent implements OnInit, OnDestroy {
 
@@ -15,6 +25,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
   profileForm: FormGroup;
   user: User;
   userSub: Subscription;
+  isHovering: boolean;
 
   constructor(private userService: UserService,
               private fb: FormBuilder) {
@@ -66,7 +77,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
       model.lastName === this.user.lastName;
   }
 
-  hovering(event) {
-    console.log('ion profile comp: ', event);
+  hovering(isHovering: boolean) {
+    this.isHovering = isHovering;
   }
 }
