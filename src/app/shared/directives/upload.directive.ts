@@ -1,4 +1,4 @@
-import { Directive } from '@angular/core';
+import { Directive, HostListener } from '@angular/core';
 
 @Directive({
   selector: '[appUpload]'
@@ -6,5 +6,10 @@ import { Directive } from '@angular/core';
 export class UploadDirective {
 
   constructor() { }
+
+  @HostListener('dragover', ['$event'])
+  onDragOver($event) {
+    console.log('event; ', $event);
+  }
 
 }

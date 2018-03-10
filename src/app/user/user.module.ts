@@ -10,6 +10,7 @@ import {
 import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   imports: [
@@ -23,7 +24,8 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     MatSnackBarModule,
     RouterModule,
     MatIconModule,
-    AngularFirestoreModule
+    AngularFirestoreModule,
+    SharedModule
   ],
   declarations: [ProfileComponent],
   providers: [UserService]
