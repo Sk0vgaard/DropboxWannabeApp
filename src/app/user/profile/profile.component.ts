@@ -88,6 +88,10 @@ export class ProfileComponent implements OnInit, OnDestroy {
     } else {
       this.img = 'https://firebasestorage.googleapis.com/v0/b/dropboxwannabeapp.appspot.com/o/Laks%201.jpg?alt=media&token=3c6acf74-fd74-4762-a341-75d6df44c035';
     }
-    console.log('animation done, ', event);
+    // console.log('animation done, ', event);
+  }
+
+  uploadNewImage(fileList) {
+    console.log('test: ', fileList);
   }
 }

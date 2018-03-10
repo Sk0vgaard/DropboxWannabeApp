@@ -7,6 +7,7 @@
         (@imageHover.done)="changePicture($event)"
         appUpload
         (hovering)="hovering($event)"
+        (dropped)="uploadNewImage($event)"
         mat-card-avatar
         [src]="img"
         alt="Photo of a Shiba Inu">
