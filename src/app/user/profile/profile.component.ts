@@ -65,4 +65,8 @@ export class ProfileComponent implements OnInit, OnDestroy {
       model.middleName === this.user.middleName &&
       model.lastName === this.user.lastName;
   }
+
+  hovering(event) {
+    console.log('ion profile comp: ', event);
+  }
 }
