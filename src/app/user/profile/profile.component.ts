@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UserService } from '../shared/user.service';
 import { Subscription } from 'rxjs/Subscription';
 import { animate, state, style, transition, trigger } from '@angular/animations';
+import { MatSnackBar } from '@angular/material';
 
 @Component({
   selector: 'app-profile',
@@ -29,7 +30,8 @@ export class ProfileComponent implements OnInit, OnDestroy {
   img: string;
 
   constructor(private userService: UserService,
-              private fb: FormBuilder) {
+              private fb: FormBuilder,
+              private snackBar: MatSnackBar) {
     this.profileForm = fb.group({
       username: ['', [Validators.required, Validators.minLength(4)]],
       firstName: '',
@@ -92,6 +94,17 @@ export class ProfileComponent implements OnInit, OnDestroy {
   }
 
   uploadNewImage(fileList) {
-    console.log('test: ', fileList);
+    // If there is a file, and the index is finding a file.
+    // Allow jpg and png.
+    // fileList.item checks if any of these types are available.
+    // if the index is above -1 it has found one of these two as my type.
+    if (fileList && fileList.length === 1 &&
+        ['image/jpeg', 'image/png'].indexOf(fileList.item(0).type) > -1) {
+      console.log(fileList.item(0));
+    } else {
+      this.snackBar.open('Image file has to be a .jpeg or .png', null, {
+        duration: 3000
+      });
+    }
   }
 }
