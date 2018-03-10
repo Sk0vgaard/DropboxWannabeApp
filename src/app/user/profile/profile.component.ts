@@ -26,6 +26,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
   user: User;
   userSub: Subscription;
   isHovering: boolean;
+  img: string;
 
   constructor(private userService: UserService,
               private fb: FormBuilder) {
@@ -79,5 +80,14 @@ export class ProfileComponent implements OnInit, OnDestroy {
 
   hovering(isHovering: boolean) {
     this.isHovering = isHovering;
+  }
+
+  changePicture(event) {
+    if (event.toState === 'hoveringImage') {
+      this.img = '../../../../assets/cloud_upload.svg';
+    } else {
+      this.img = 'https://firebasestorage.googleapis.com/v0/b/dropboxwannabeapp.appspot.com/o/Laks%201.jpg?alt=media&token=3c6acf74-fd74-4762-a341-75d6df44c035';
+    }
+    console.log('animation done, ', event);
   }
 }

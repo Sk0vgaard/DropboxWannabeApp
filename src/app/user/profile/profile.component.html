@@ -2,11 +2,13 @@
   <mat-card  fxFlex="80">
     <mat-card-header>
       <img
+        matTooltip="Drag/click for new image"
         [@imageHover]="isHovering ? 'hoveringImage' : 'notHoveringImage'"
+        (@imageHover.done)="changePicture($event)"
         appUpload
         (hovering)="hovering($event)"
         mat-card-avatar
-        src="https://firebasestorage.googleapis.com/v0/b/dropboxwannabeapp.appspot.com/o/Laks%201.jpg?alt=media&token=3c6acf74-fd74-4762-a341-75d6df44c035"
+        [src]="img"
         alt="Photo of a Shiba Inu">
       <mat-card-title>{{user.username}}</mat-card-title>
       <mat-card-subtitle>{{user.email}}</mat-card-subtitle>

@@ -5,7 +5,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import {
   MatButtonModule, MatCardModule, MatFormFieldModule, MatIconModule, MatInputModule,
-  MatSnackBarModule
+  MatSnackBarModule, MatTooltipModule
 } from '@angular/material';
 import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -27,7 +27,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     MatIconModule,
     AngularFirestoreModule,
     SharedModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatTooltipModule
   ],
   declarations: [ProfileComponent],
   providers: [UserService]
