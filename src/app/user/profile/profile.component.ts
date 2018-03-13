@@ -43,13 +43,10 @@ export class ProfileComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.userSub = this.userService.getUser()
+    this.userSub = this.userService.getUserWithProfileUrl()
       .subscribe(user => {
         this.user = user;
-        this.fileService.downloadUrlProfile(user.uid).subscribe(url => {
-        console.log('url', url);
-          this.img = url;
-        });
+        this.img = user.profileImageUrl;
         this.profileForm.patchValue(user); // patchValue populate the form if the fields match name inside the form
       });
   }
@@ -93,7 +90,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
     if (event.toState === 'hoveringImage') {
       this.img = '../../../../assets/cloud_upload.svg';
     } else {
-      this.img = 'https://firebasestorage.googleapis.com/v0/b/dropboxwannabeapp.appspot.com/o/Laks%201.jpg?alt=media&token=3c6acf74-fd74-4762-a341-75d6df44c035';
+      this.img = this.user.profileImageUrl;
     }
     // console.log('animation done, ', event);
   }

@@ -5,11 +5,13 @@ import { User } from './user';
 import { AngularFirestore } from 'angularfire2/firestore';
 import 'rxjs/add/operator/first';
 import {EmptyObservable} from 'rxjs/observable/EmptyObservable';
+import { FileService } from '../../file-system/file.service';
 
 @Injectable()
 export class UserService {
 
   constructor(private authService: AuthService,
+              private fileService: FileService,
               private afs: AngularFirestore) {
   }
 
@@ -35,6 +37,17 @@ export class UserService {
            return authUser;
           });
     });
+  }
+
+  getUserWithProfileUrl(): Observable<User> {
+    return this.getUser()
+      .switchMap(user => {
+        return this.fileService.downloadUrlProfile(user.uid)
+          .map(url => {
+            user.profileImageUrl = url;
+            return user;
+          });
+      });
   }
 
   update(user: User): Promise<any> {
