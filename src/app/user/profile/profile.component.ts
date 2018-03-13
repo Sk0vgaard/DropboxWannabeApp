@@ -29,6 +29,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
   userSub: Subscription;
   isHovering: boolean;
   img: string;
+  srcLoaded: boolean;
 
   constructor(private userService: UserService,
               private fb: FormBuilder,
@@ -86,15 +87,6 @@ export class ProfileComponent implements OnInit, OnDestroy {
     this.isHovering = isHovering;
   }
 
-  changePicture(event) {
-    if (event.toState === 'hoveringImage') {
-      this.img = '../../../../assets/cloud_upload.svg';
-    } else {
-      this.img = this.user.profileImageUrl;
-    }
-    // console.log('animation done, ', event);
-  }
-
   uploadNewImage(fileList) {
     // If there is a file, and the index is finding a file.
     // Allow jpg and png.
@@ -102,16 +94,19 @@ export class ProfileComponent implements OnInit, OnDestroy {
     // if the index is above -1 it has found one of these two as my type.
     if (fileList && fileList.length === 1 &&
         ['image/jpeg', 'image/png'].indexOf(fileList.item(0).type) > -1) {
+      this.srcLoaded = false;
       const file = fileList.item(0);
       const path = 'profile-images/' + this.user.uid;
       this.fileService.upload(path, file).downloadUrl.subscribe(
         url => {
           this.img = url;
+          this.hovering(false);
         });
     } else {
       this.snackBar.open('Image file has to be a .jpeg or .png', null, {
         duration: 3000
       });
+      this.hovering(false);
     }
   }
 }

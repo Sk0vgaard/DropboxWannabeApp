@@ -2,15 +2,21 @@
   <mat-card  fxFlex="80">
     <mat-card-header>
       <img
+        [hidden]="!srcLoaded"
         matTooltip="Drag/click for new image"
         [@imageHover]="isHovering ? 'hoveringImage' : 'notHoveringImage'"
-        (@imageHover.done)="changePicture($event)"
         appUpload
         (hovering)="hovering($event)"
         (dropped)="uploadNewImage($event)"
         mat-card-avatar
-        [src]="img"
-        alt="Photo of a Shiba Inu">
+        [src]="isHovering ? '/assets/cloud_upload.svg' : img"
+      alt="Profile picture"
+      (load)="srcLoaded = true">
+      <mat-spinner
+        mat-card-avatar
+        diameter="40"
+        *ngIf="!srcLoaded">
+      </mat-spinner>
       <mat-card-title>{{user.username}}</mat-card-title>
       <mat-card-subtitle>{{user.email}}</mat-card-subtitle>
     </mat-card-header>

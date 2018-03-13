@@ -4,7 +4,7 @@ import { UserService } from './shared/user.service';
 import { ProfileComponent } from './profile/profile.component';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import {
-  MatButtonModule, MatCardModule, MatFormFieldModule, MatIconModule, MatInputModule,
+  MatButtonModule, MatCardModule, MatFormFieldModule, MatIconModule, MatInputModule, MatProgressSpinnerModule,
   MatSnackBarModule, MatTooltipModule
 } from '@angular/material';
 import { RouterModule } from '@angular/router';
@@ -30,7 +30,8 @@ import { FileSystemModule } from '../file-system/file-system.module';
     SharedModule,
     BrowserAnimationsModule,
     MatTooltipModule,
-    FileSystemModule
+    FileSystemModule,
+    MatProgressSpinnerModule
   ],
   declarations: [ProfileComponent],
   providers: [UserService]
