@@ -5,6 +5,7 @@ import { UserService } from '../shared/user.service';
 import { Subscription } from 'rxjs/Subscription';
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { MatSnackBar } from '@angular/material';
+import { FileService } from '../../file-system/file.service';
 
 @Component({
   selector: 'app-profile',
@@ -31,7 +32,8 @@ export class ProfileComponent implements OnInit, OnDestroy {
 
   constructor(private userService: UserService,
               private fb: FormBuilder,
-              private snackBar: MatSnackBar) {
+              private snackBar: MatSnackBar,
+              private fileService: FileService) {
     this.profileForm = fb.group({
       username: ['', [Validators.required, Validators.minLength(4)]],
       firstName: '',
@@ -101,6 +103,13 @@ export class ProfileComponent implements OnInit, OnDestroy {
     if (fileList && fileList.length === 1 &&
         ['image/jpeg', 'image/png'].indexOf(fileList.item(0).type) > -1) {
       console.log(fileList.item(0));
+      const file = fileList.item(0);
+      const path = 'profile-image/' + file.name;
+      this.fileService.upload(path, file).downloadUrl.subscribe(
+        url => {
+          console.log('url', url);
+          this.img = url;
+        });
     } else {
       this.snackBar.open('Image file has to be a .jpeg or .png', null, {
         duration: 3000

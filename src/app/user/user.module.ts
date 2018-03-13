@@ -12,6 +12,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { SharedModule } from '../shared/shared.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FileSystemModule } from '../file-system/file-system.module';
 
 @NgModule({
   imports: [
@@ -28,7 +29,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     AngularFirestoreModule,
     SharedModule,
     BrowserAnimationsModule,
-    MatTooltipModule
+    MatTooltipModule,
+    FileSystemModule
   ],
   declarations: [ProfileComponent],
   providers: [UserService]
