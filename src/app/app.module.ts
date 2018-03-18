@@ -13,6 +13,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { environment } from '../environments/environment';
 import { AngularFireModule } from 'angularfire2';
 import { AlbumsListComponent } from './albums/albums-list/albums-list.component';
+import { FileSystemModule } from './file-system/file-system.module';
 
 
 @NgModule({
@@ -33,6 +34,7 @@ import { AlbumsListComponent } from './albums/albums-list/albums-list.component'
     FlexLayoutModule,
     AngularFireModule.initializeApp(environment.firebase),
     AuthModule,
+    FileSystemModule
   ],
   providers: [],
   exports: [RouterModule],

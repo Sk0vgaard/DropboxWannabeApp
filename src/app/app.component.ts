@@ -13,7 +13,7 @@ export class AppComponent implements OnInit, OnDestroy {
   routes = [
     {route: '/', title: 'Home', icon: 'home'},
     {route: '/profile', title: 'Profile', icon: 'account_circle'},
-    {route: '/files', title: 'Files', icon: 'folder'},
+    {route: '/files', title: 'Albums', icon: 'folder'},
     ];
 
   navBarOpen = true;

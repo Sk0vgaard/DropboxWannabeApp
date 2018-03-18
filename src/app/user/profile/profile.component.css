@@ -7,7 +7,3 @@
 ::ng-deep snack-bar-container.snack-color-error {
   background: darkred;
 }
-
-.fromTop {
-  margin-top: 1%;
-}

@@ -8,3 +8,7 @@ button.button-logout {
 }button.button-toolbar {
   background: #00b6ac;
 }
+
+.spaceBottom {
+  margin-bottom: 1%;
+}
