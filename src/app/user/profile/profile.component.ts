@@ -47,7 +47,11 @@ export class ProfileComponent implements OnInit, OnDestroy {
     this.userSub = this.userService.getUserWithProfileUrl()
       .subscribe(user => {
         this.user = user;
-        this.img = user.profileImageUrl;
+        if (this.user.img) {
+          this.img = user.profileImageUrl;
+        } else {
+          this.img = '/assets/insert_photo.svg';
+        }
         this.profileForm.patchValue(user); // patchValue populate the form if the fields match name inside the form
       });
   }
@@ -59,9 +63,23 @@ export class ProfileComponent implements OnInit, OnDestroy {
   save() {
     const model = this.profileForm.value as User;
     model.uid = this.user.uid;
+    model.img = this.user.img;
     this.userService.update(model)
-      .then(() => console.log('saved'))
-      .catch(err => console.log('error', err));
+      .then(() => {
+      this.snackBar.open('User saved...', null, {
+          duration: 3000,
+        verticalPosition: 'top',
+        panelClass: ['snack-color-success']
+      });
+      })
+      .catch(err => {
+        this.snackBar.open('Error, User NOT saved - Try again later...', null, {
+          duration: 4000,
+          verticalPosition: 'top',
+          panelClass: ['snack-color-error']
+
+        });
+      });
   }
 
   fcErr(fc: string, ec: string, pre?: string[]): boolean {
@@ -100,6 +118,8 @@ export class ProfileComponent implements OnInit, OnDestroy {
       this.fileService.upload(path, file).downloadUrl.subscribe(
         url => {
           this.img = url;
+          this.user.img = true;
+          this.save();
           this.hovering(false);
         });
     } else {

@@ -7,4 +7,5 @@ export class User {
   middleName?: string;
   lastName?: string;
   profileImageUrl?: string;
+  img?: boolean;
 }
