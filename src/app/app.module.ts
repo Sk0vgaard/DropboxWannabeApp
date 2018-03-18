@@ -6,19 +6,20 @@ import { MatButtonModule, MatIconModule, MatListModule, MatSidenavModule } from 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './/app-routing.module';
 import { AuthModule } from './auth/auth.module';
-import { HomeModule } from './home/home.module';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { SharedModule } from './shared/shared.module';
 import { RouterModule } from '@angular/router';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { environment } from '../environments/environment';
 import { AngularFireModule } from 'angularfire2';
+import { AlbumsListComponent } from './albums/albums-list/albums-list.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    AlbumsListComponent
   ],
   imports: [
     BrowserModule,
@@ -28,7 +29,6 @@ import { AngularFireModule } from 'angularfire2';
     MatListModule,
     AppRoutingModule,
     SharedModule,
-    HomeModule,
     MatIconModule,
     FlexLayoutModule,
     AngularFireModule.initializeApp(environment.firebase),
