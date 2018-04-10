@@ -1,4 +1,5 @@
-<app-file-details [file]="file"
-                  [url]="url"
-                  (imageDeleted)="deleteImage()">
-</app-file-details>
+<div fxLayout="row">
+  <app-file-system-column [column]="column"
+                          *ngFor="let column of this.columns">
+  </app-file-system-column>
+</div>

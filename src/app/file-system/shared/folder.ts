@@ -1,11 +1,11 @@
-export class Folder {
+export interface Folder {
   name: string;
-  owner: string;
-  files: [{
+  owner?: string;
+  files?: [{
     displayName: string;
     uid: string;
   }];
-  subFolders: [{
+  subFolders?: [{
     name: string;
     uid: string;
   }];
