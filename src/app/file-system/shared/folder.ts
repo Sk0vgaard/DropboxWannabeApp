@@ -2,7 +2,7 @@ export class Folder {
   name: string;
   owner: string;
   files: [{
-    diplayName: string;
+    displayName: string;
     uid: string;
   }];
   subFolders: [{
