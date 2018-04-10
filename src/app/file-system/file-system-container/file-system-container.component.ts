@@ -9,6 +9,7 @@ import { File } from '../shared/file';
 export class FileSystemContainerComponent implements OnInit {
 
   file: File;
+  url: string;
 
   constructor() {
     this.file = {
@@ -19,9 +20,14 @@ export class FileSystemContainerComponent implements OnInit {
       displayName: 'EN HUND',
       owner: 'Leonora'
     };
+    this.url = 'https://material.angular.io/assets/img/examples/shiba2.jpg';
   }
 
   ngOnInit() {
+  }
+
+  deleteImage() {
+    console.log('delete the image');
   }
 
 }
